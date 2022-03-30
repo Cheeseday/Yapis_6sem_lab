@@ -1,0 +1,7 @@
+Set set;
+Element firstElement = "11";
+Add(set,firstElement);
+For(set,elementOne)
+	{
+	 Print(elementOne);
+	}

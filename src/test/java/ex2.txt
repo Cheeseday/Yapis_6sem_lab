@@ -1,0 +1,17 @@
+Set exampleSet;
+Element firstElement = "11";
+Element secondElement = "22";
+Element thirdElement = "33";
+Element fourthElement = "44";
+Add(exampleSet,firstElement);
+Add(exampleSet,secondElement);
+Add(exampleSet,thirdElement);
+Add(exampleSet,fourthElement);
+functionPrint(exampleSet);
+Void functionPrint(Set set)
+	{
+   		For(set, elem)
+		{
+      	  Print(elem);
+		}
+	}
