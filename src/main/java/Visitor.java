@@ -278,6 +278,41 @@ public class Visitor extends GrammarBaseVisitor<String> {
         return buffer;
     }
 
+    @Override public String visitDeclare_var(GrammarParser.Declare_varContext ctx){
+        String type = visitType(ctx.type());
+        String name = ctx.NAME().getText();
+        String buffer = "";
+        if(type.equals("Element")){
+            if (ctx.NAME() != null) {
+                if (Variable.getInstance().containsElement(name)) {
+                    errors.add("Variable element " + name + " already exists - (Declare_var)");
+                }
+                Variable.getInstance().addElement(name);
+                buffer += "Element " + name + "=";
+            } else {
+                if (!Variable.getInstance().containsElement(name)) {
+                    errors.add("Variable element " + name + " doesn't exists - (Declare_var)");
+                }
+                buffer += name + "=";
+            }
+        }
+        if(type.equals("Set")){
+            if (ctx.NAME() != null) {
+                if (Variable.getInstance().containsElement(name)) {
+                    errors.add("Variable set " + name + " already exists - (Declare_var)");
+                }
+                Variable.getInstance().addElement(name);
+                buffer += "Set " + name + "=";
+            } else {
+                if (!Variable.getInstance().containsElement(name)) {
+                    errors.add("Variable set " + name + " doesn't exists - (Declare_var)");
+                }
+                buffer += name + "=";
+            }
+        }
+        return buffer;
+    }
+
     @Override public String visitList_operator(GrammarParser.List_operatorContext ctx){
 
             return visitOperator((GrammarParser.OperatorContext) ctx.operator());
